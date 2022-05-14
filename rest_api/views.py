@@ -24,6 +24,11 @@ class GeophysicalSurveyViewSet(viewsets.ModelViewSet):
     serializer_class = GeophysicalSurveySerializer
 
 
+class StratigraphyViewSet(viewsets.ModelViewSet):
+    queryset = Stratigraphy.objects.all()
+    serializer_class = StratigraphySerializer
+
+
 class SampleViewSet(viewsets.ModelViewSet):
     queryset = Sample.objects.all()
     serializer_class = SampleSerializer

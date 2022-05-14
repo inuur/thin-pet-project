@@ -59,6 +59,18 @@ class SampleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class StratigraphySerializer(serializers.ModelSerializer):
+    link = serializers.SerializerMethodField('get_link', read_only=True)
+
+    @staticmethod
+    def get_link(obj):
+        return f'/stratigraphy/{obj.id}'
+
+    class Meta:
+        model = Stratigraphy
+        fields = '__all__'
+
+
 class GeophysicalSurveySerializer(serializers.ModelSerializer):
     link = serializers.SerializerMethodField('get_link', read_only=True)
 
@@ -73,6 +85,7 @@ class GeophysicalSurveySerializer(serializers.ModelSerializer):
 
 class WellSerializer(serializers.ModelSerializer):
     geo_surveys = GeophysicalSurveySerializer(many=True, read_only=True)
+    stratigraphies = StratigraphySerializer(many=True, read_only=True)
     samples = SampleSerializer(many=True, read_only=True)
     show = serializers.BooleanField(default=False, read_only=True)
     show_sample = serializers.BooleanField(default=False, read_only=True)

@@ -52,6 +52,18 @@ class GeophysicalSurvey(models.Model):
         return self.name
 
 
+class Stratigraphy(models.Model):
+    name = models.CharField(max_length=25, null=True, default=None)
+    well = models.ForeignKey(
+        Well,
+        related_name='stratigraphies',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class Sample(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
