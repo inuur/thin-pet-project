@@ -10,6 +10,7 @@ router.register(r'well', WellViewSet)
 router.register(r'sample', SampleViewSet)
 router.register(r'thin', ThinViewSet)
 router.register(r'thin-section', ThinSectionViewSet)
+router.register(r'thin-section-image', ThinSectionImageViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

@@ -32,3 +32,8 @@ class ThinViewSet(viewsets.ModelViewSet):
 class ThinSectionViewSet(viewsets.ModelViewSet):
     queryset = ThinSection.objects.all()
     serializer_class = ThinSectionSerializer
+
+
+class ThinSectionImageViewSet(viewsets.ModelViewSet):
+    queryset = ThinSectionImage.objects.all()
+    serializer_class = ThinSectionImageSerializer

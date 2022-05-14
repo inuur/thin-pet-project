@@ -85,3 +85,20 @@ class ThinSection(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ThinSectionImage(models.Model):
+    grade = models.IntegerField()
+    image = models.FileField(
+        storage=ClientDocsStorage(),
+        blank=True,
+        default=None
+    )
+    thin_section = models.ForeignKey(
+        ThinSection,
+        related_name='images',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f'Image {self.id}'

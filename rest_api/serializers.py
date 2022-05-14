@@ -1,9 +1,24 @@
 from rest_framework import serializers
 
 from .models import *
+from .views import *
+
+
+class ThinSectionImageSerializer(serializers.ModelSerializer):
+    show = serializers.BooleanField(default=False, read_only=True)
+    link = serializers.SerializerMethodField('get_link', read_only=True)
+
+    @staticmethod
+    def get_link(obj):
+        return f'/thin-section-image/{obj.id}'
+
+    class Meta:
+        model = ThinSectionImage
+        fields = '__all__'
 
 
 class ThinSectionSerializer(serializers.ModelSerializer):
+    images = ThinSectionImageSerializer(many=True, read_only=True)
     show = serializers.BooleanField(default=False, read_only=True)
     link = serializers.SerializerMethodField('get_link', read_only=True)
 
@@ -17,6 +32,7 @@ class ThinSectionSerializer(serializers.ModelSerializer):
 
 
 class ThinSerializer(serializers.ModelSerializer):
+    thin_sections = ThinSectionSerializer(many=True, read_only=True)
     show = serializers.BooleanField(default=False, read_only=True)
     link = serializers.SerializerMethodField('get_link', read_only=True)
 
