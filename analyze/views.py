@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
 
-# Create your views here.
+from .serializers import *
+from .models import *
+
+
+class GranulometricAnalysisViewSet(viewsets.ModelViewSet):
+    queryset = GranulometricAnalysis.objects.all()
+    serializer_class = GranulometricAnalysisSerializer
