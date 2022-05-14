@@ -25,7 +25,11 @@ class MineralDeposit(models.Model):
 class Well(models.Model):
     name = models.CharField(max_length=50)
     depth = models.CharField(max_length=70)
-    photo_kern = models.FileField(storage=ClientDocsStorage(), blank=True, null=True)
+    photo_kern = models.FileField(
+        storage=ClientDocsStorage(),
+        blank=True,
+        default=None
+    )
     mineral_deposit = models.ForeignKey(
         MineralDeposit,
         related_name='wells',
@@ -39,7 +43,11 @@ class Well(models.Model):
 class Sample(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
-    photo = models.ImageField(storage=ClientDocsStorage(), blank=True, null=True)
+    photo = models.ImageField(
+        storage=ClientDocsStorage(),
+        blank=True,
+        default=None
+    )
     well = models.ForeignKey(
         Well,
         related_name='samples',
