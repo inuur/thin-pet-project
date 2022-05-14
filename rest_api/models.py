@@ -18,3 +18,16 @@ class MineralDeposit(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Well(models.Model):
+    name = models.CharField(max_length=50)
+    mineral_deposit = models.ForeignKey(
+        MineralDeposit,
+        related_name='wells',
+        on_delete=models.CASCADE,
+    )
+    depth = models.CharField(max_length=70)
+
+    def __str__(self):
+        return self.name

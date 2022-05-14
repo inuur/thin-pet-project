@@ -1,7 +1,15 @@
 from rest_framework import viewsets
 
-from .models import TectonicConfinement, MineralDeposit
-from .serializers import TectonicConfinementSerializer, MineralDepositSerializer
+from .models import (
+    TectonicConfinement,
+    MineralDeposit,
+    Well,
+)
+from .serializers import (
+    TectonicConfinementSerializer,
+    MineralDepositSerializer,
+    WellSerializer,
+)
 
 
 class TectonicConfinementViewSet(viewsets.ModelViewSet):
@@ -12,3 +20,8 @@ class TectonicConfinementViewSet(viewsets.ModelViewSet):
 class MineralDepositViewSet(viewsets.ModelViewSet):
     queryset = MineralDeposit.objects.all()
     serializer_class = MineralDepositSerializer
+
+
+class WellViewSet(viewsets.ModelViewSet):
+    queryset = Well.objects.all()
+    serializer_class = WellSerializer
