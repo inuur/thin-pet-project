@@ -9,6 +9,7 @@ router.register(r'deposit', MineralDepositViewSet)
 router.register(r'well', WellViewSet)
 router.register(r'sample', SampleViewSet)
 router.register(r'thin', ThinViewSet)
+router.register(r'thin-section', ThinSectionViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

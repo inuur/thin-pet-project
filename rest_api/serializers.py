@@ -3,6 +3,19 @@ from rest_framework import serializers
 from .models import *
 
 
+class ThinSectionSerializer(serializers.ModelSerializer):
+    show = serializers.BooleanField(default=False, read_only=True)
+    link = serializers.SerializerMethodField('get_link', read_only=True)
+
+    @staticmethod
+    def get_link(obj):
+        return f'/thin-section/{obj.id}'
+
+    class Meta:
+        model = ThinSection
+        fields = '__all__'
+
+
 class ThinSerializer(serializers.ModelSerializer):
     show = serializers.BooleanField(default=False, read_only=True)
     link = serializers.SerializerMethodField('get_link', read_only=True)

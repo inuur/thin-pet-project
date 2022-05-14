@@ -73,3 +73,15 @@ class Thin(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ThinSection(models.Model):
+    name = models.CharField(max_length=50)
+    thin = models.ForeignKey(
+        Thin,
+        related_name='thin_sections',
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name

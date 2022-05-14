@@ -27,3 +27,8 @@ class SampleViewSet(viewsets.ModelViewSet):
 class ThinViewSet(viewsets.ModelViewSet):
     queryset = Thin.objects.all()
     serializer_class = ThinSerializer
+
+
+class ThinSectionViewSet(viewsets.ModelViewSet):
+    queryset = ThinSection.objects.all()
+    serializer_class = ThinSectionSerializer
