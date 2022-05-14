@@ -8,12 +8,8 @@ from .models import (
 
 
 class WellSerializer(serializers.ModelSerializer):
-    show = serializers.SerializerMethodField('get_show')
-    link = serializers.SerializerMethodField('get_link')
-
-    @staticmethod
-    def get_show(obj):
-        return False
+    show = serializers.BooleanField(default=False, read_only=True)
+    link = serializers.SerializerMethodField('get_link', read_only=True)
 
     @staticmethod
     def get_link(obj):
@@ -26,12 +22,8 @@ class WellSerializer(serializers.ModelSerializer):
 
 class MineralDepositSerializer(serializers.ModelSerializer):
     wells = WellSerializer(many=True, read_only=True)
-    show = serializers.SerializerMethodField('get_show')
-    link = serializers.SerializerMethodField('get_link')
-
-    @staticmethod
-    def get_show(obj):
-        return False
+    show = serializers.BooleanField(default=False, read_only=True)
+    link = serializers.SerializerMethodField('get_link', read_only=True)
 
     @staticmethod
     def get_link(obj):
@@ -44,12 +36,8 @@ class MineralDepositSerializer(serializers.ModelSerializer):
 
 class TectonicConfinementSerializer(serializers.ModelSerializer):
     mineral_deposits = MineralDepositSerializer(many=True, read_only=True)
-    show = serializers.SerializerMethodField('get_show')
-    link = serializers.SerializerMethodField('get_link')
-
-    @staticmethod
-    def get_show(obj):
-        return False
+    show = serializers.BooleanField(default=False, read_only=True)
+    link = serializers.SerializerMethodField('get_link', read_only=True)
 
     @staticmethod
     def get_link(obj):
