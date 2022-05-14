@@ -56,3 +56,20 @@ class Sample(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Thin(models.Model):
+    name = models.CharField(max_length=50)
+    photo = models.ImageField(
+        storage=ClientDocsStorage(),
+        blank=True,
+        default=None
+    )
+    sample = models.ForeignKey(
+        Sample,
+        related_name='thins',
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.name

@@ -1,14 +1,39 @@
 from rest_framework import serializers
 
-from .models import (
-    TectonicConfinement,
-    MineralDeposit,
-    Well,
-)
+from .models import *
+
+
+class ThinSerializer(serializers.ModelSerializer):
+    show = serializers.BooleanField(default=False, read_only=True)
+    link = serializers.SerializerMethodField('get_link', read_only=True)
+
+    @staticmethod
+    def get_link(obj):
+        return f'/thin/{obj.id}'
+
+    class Meta:
+        model = Thin
+        fields = '__all__'
+
+
+class SampleSerializer(serializers.ModelSerializer):
+    thins = ThinSerializer(many=True, read_only=True)
+    show = serializers.BooleanField(default=False, read_only=True)
+    link = serializers.SerializerMethodField('get_link', read_only=True)
+
+    @staticmethod
+    def get_link(obj):
+        return f'/sample/{obj.id}'
+
+    class Meta:
+        model = Sample
+        fields = '__all__'
 
 
 class WellSerializer(serializers.ModelSerializer):
+    samples = SampleSerializer(many=True, read_only=True)
     show = serializers.BooleanField(default=False, read_only=True)
+    show_sample = serializers.BooleanField(default=False, read_only=True)
     link = serializers.SerializerMethodField('get_link', read_only=True)
 
     @staticmethod
