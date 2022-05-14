@@ -16,6 +16,7 @@ class MineralDeposit(models.Model):
     )
     tectonic_confinement = models.ForeignKey(
         TectonicConfinement,
+        related_name='mineral_deposits',
         on_delete=models.CASCADE,
     )
 
