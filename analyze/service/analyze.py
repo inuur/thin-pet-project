@@ -17,7 +17,7 @@ def analyze_by_type(analysis_type, thin_section_id):
     image_byte_array = np.asarray(json_response['img'])
     image_stream = image_stream_from_array(image_byte_array)
     image_analyze = ImageAnalyze.objects.create(
-        thin_section=thin_section_id,
+        thin_section_id=thin_section_id,
         image_type=analysis_type,
         report=None
     )
@@ -33,7 +33,7 @@ def color_analyze(thin_section_id):
 
 
 def cover_analyze(thin_section_id):
-    return analyze_by_type('cover', thin_section_id)
+    return analyze_by_type('overlay', thin_section_id)
 
 
 def full_analysis(thin_section_id):

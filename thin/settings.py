@@ -125,7 +125,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
 
-ALLOWED_HOSTS = ['192.168.0.105']
+ALLOWED_HOSTS = [
+    '192.168.0.105',
+    '127.0.0.1',
+    'localhost'
+]
 
 CORS_ALLOW_CREDENTIALS = True
 

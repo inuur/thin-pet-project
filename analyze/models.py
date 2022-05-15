@@ -56,4 +56,6 @@ class ImageAnalyze(models.Model):
     report = models.ForeignKey(
         Report,
         on_delete=models.CASCADE,
+        null=True,
+        default=None
     )
