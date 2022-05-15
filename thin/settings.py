@@ -125,6 +125,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
 
+ALLOWED_HOSTS = ['192.168.0.105']
+
 CORS_ALLOW_CREDENTIALS = True
 
 # File storage
