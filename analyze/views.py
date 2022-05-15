@@ -3,7 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from .serializers import *
-from .service.analyze import color_analyze, cover_analyze
+from .service.analyze import color_analyze, overlay_analyze
 
 
 class GranulometricAnalysisViewSet(viewsets.ModelViewSet):
@@ -24,8 +24,8 @@ class ColorAnalysisViewSet(viewsets.ViewSet):
         return Response({'image_analyze': image_analyze})
 
 
-class CoverAnalysisViewSet(viewsets.ViewSet):
+class OverlayAnalysisViewSet(viewsets.ViewSet):
     @action(methods=['POST'], detail=True, url_path='')
-    def cover(self, request, pk=None):
-        image_analyze = cover_analyze(pk)
+    def overlay(self, request, pk=None):
+        image_analyze = overlay_analyze(pk)
         return Response({'image_analyze': image_analyze})

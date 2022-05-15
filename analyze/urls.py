@@ -7,7 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'gran-analyse', GranulometricAnalysisViewSet)
 router.register(r'analyze', FullAnalysisViewSet, basename='analyze')
 router.register(r'analyze', ColorAnalysisViewSet, basename='analyze')
-router.register(r'analyze', CoverAnalysisViewSet, basename='analyze')
+router.register(r'analyze', OverlayAnalysisViewSet, basename='analyze')
 
 urlpatterns = [
     path('', include(router.urls))

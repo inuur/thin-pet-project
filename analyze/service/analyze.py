@@ -32,7 +32,7 @@ def color_analyze(thin_section_id):
     return analyze_by_type('color', thin_section_id)
 
 
-def cover_analyze(thin_section_id):
+def overlay_analyze(thin_section_id):
     return analyze_by_type('overlay', thin_section_id)
 
 
